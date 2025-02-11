@@ -21,26 +21,6 @@ sudo chmod +x ./kubectl
 sudo mkdir -p $HOME/bin && sudo cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
 
 
-# installation of my-jenkins-server
-sudo apt update 
-sudo apt install openjdk-11-jdk 
-wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key |sudo gpg --dearmor -o /usr/share/keyrings/jenkins.gpg
-
-sudo sh -c 'echo deb [signed-by=/usr/share/keyrings/jenkins.gpg] http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
-
-sudo apt update
-
-sudo apt install jenkins
-#in case you get this error
-#GPG error: https://pkg.jenkins.io/debian-stable binary/ Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 5BA31D57EF5975CA
-#5BA31D57EF5975CA
-sudo systemctl start jenkins.service
-sudo systemctl enable --now jenkins
-sudo systemctl status jenkins
-sudo ufw allow 8080
-sudo ufw allow OpenSSH
-sudo ufw enable
-sudo ufw status
 
 #another method of installing jenkins
 sudo apt update -y
